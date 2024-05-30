@@ -1,4 +1,5 @@
 import discord
+from discord import app_commands
 from discord.ext import commands
 from transformers import pipeline
 import random
@@ -17,8 +18,8 @@ import asyncio
 from pytube import YouTube
 from moviepy import editor
 import threading
-from dotenv import load_dotenv
-import youtube_search as YT
+#from dotenv import load_dotenv
+#import youtube_search as YT
 from discord.utils import get
 
 class music_cog(commands.Cog):
@@ -31,7 +32,7 @@ class music_cog(commands.Cog):
         self.vc = None
         self.music_queue = []
     
-bot = commands.Bot(command_prefix=["lat ", "Lat "], intents=discord.Intents.all(), activity=discord.Game(name="Soy hija de KevinRJF"), case_insensitive=True)
+bot = commands.Bot(command_prefix=["latte ", "Latte "], intents=discord.Intents.all(), activity=discord.Game(name="que onda"), case_insensitive=True)
 
 #bot.load_extension("music")
 
@@ -45,6 +46,11 @@ bot = commands.Bot(command_prefix=["lat ", "Lat "], intents=discord.Intents.all(
 @bot.event
 async def on_ready():
     print(f"{bot.user} va sobre")
+    try:
+        synced = await bot.tree.sync()
+        print(f"Comandos sincronizados: {len(synced)}")
+    except Exception as e:
+        print(e)
 
 #################################################################################################################################################
 
@@ -134,64 +140,54 @@ async def sadwords(message):
      if any(word in message.content for word in sad_words):
           await message.channel.send(random.choice(starter_happywords))
 
-sad_words = ["triste", "depre", "deprimido", "infeliz", "suicidio", "suicidar", "suicidarme",
+sad_words = ["depre", "deprimido", "suicidio", "suicidar", "suicidarme",
              "matarme", "colgarme"]
 
 starter_happywords = [
      "Ánimos :muscle:",
-     "Cada día es una nueva oportunidad para que cambiés tu vida",
-     "Tu actitud, no tu aptitud, determinará tu altitud mi broder",
-     "La vida tiene el color con el que vos la querrás pintar",
-     "Enfrentá a tus miedos dale no seas cochón."]
+     "Clase cochonada acabo de leer",
+     "Oe te pasaste ahi"]
      
 #podés usar el comando `-help` para que te dé una lista de todos mis comandos actuales. :saluting_face: 
 
 @bot.listen('on_message')
 async def listenmsg(msg):
-    if 'latte' in msg.content.lower():
-        channel = msg.channel
-        await channel.send(':woman_raising_hand:')
 
-@bot.listen('on_message')
-async def listenmsg(msg):
     if 'i need to kill my enemies' in msg.content.lower():
         channel = msg.channel
         await channel.send('You have no enemies. No one in the world is your enemy. There is no one you need to hurt.')
 
-@bot.listen('on_message')
-async def listenmsg(msg):
     if 'marine code' in msg.content.lower():
         channel = msg.channel
         await channel.send('**01746**\n\nhttps://tenor.com/68Es.gif')
 
-@bot.listen('on_message')
-async def listenmsg(msg):
     if 'let him cook' in msg.content.lower():
         channel = msg.channel
         await channel.send('https://tenor.com/b0oe8.gif')
 
-@bot.listen('on_message')
-async def listenmsg(msg):
     if 'pato' in msg.content.lower():
         channel = msg.channel
         await channel.send('https://tenor.com/boioN.gif')
 
-
-@bot.listen('on_message')
-async def listenmsg(msg):
     if 'mamala chebin' in msg.content.lower():
         channel = msg.channel
         await channel.send('sos cochón chebin')
+    
+    if 'sex' in msg.content.lower():
+        channel = msg.channel
+        await channel.send('https://media.discordapp.net/attachments/522820942125203462/897435255605198858/885398144244928524.gif?width=160&height=160')
 
-@bot.listen('on_message')
-async def listenmsg(message):
-        if message.author == bot.user:
-            return
-        if message.author.bot: return
-        if 'sex' in message.content.lower():
-            channel = message.channel
-            await channel.send('https://media.discordapp.net/attachments/522820942125203462/897435255605198858/885398144244928524.gif?width=160&height=160')
+    if 'sus' in msg.content.lower():
+        channel = msg.channel
+        await channel.send('https://cdn.discordapp.com/attachments/1095826652736520192/1097084226077196359/among-us-twerk.gif')
 
+    if 'chebin' in msg.content.lower():
+        channel = msg.channel
+        await channel.send('https://media.discordapp.net/attachments/1095826652736520192/1097085240108920882/WhatsApp_Image_2023-04-16_at_02.54.31.jpg?width=297&height=286')
+
+    if 'nigg' in msg.content.lower():
+        channel = msg.channel
+        await channel.send('https://tenor.com/bQtER.gif')
 
 #@bot.event
 #async def on_message(message):
@@ -200,32 +196,18 @@ async def listenmsg(message):
 #    if message.author.bot: return
 
 #    if bot.user.mention == message.content and message.mention_everyone is False:
-#        await message.channel.send(f"Que onda {message.author.mention}")
+#        await message.channel.send(f" {message.autQue ondahor.mention}")
 #    await bot.process_commands(message)
 
-
-@bot.listen('on_message')
-async def listenmsg(msg):
-    if msg.author == bot.user:
-        return
-    if msg.author.bot: return
-    if 'sus' in msg.content.lower():
-        channel = msg.channel
-        await channel.send('https://cdn.discordapp.com/attachments/1095826652736520192/1097084226077196359/among-us-twerk.gif')
-
-@bot.listen('on_message')
-async def listenmsg(msg):
-    if 'chebin' in msg.content.lower():
-        channel = msg.channel
-        await channel.send('https://media.discordapp.net/attachments/1095826652736520192/1097085240108920882/WhatsApp_Image_2023-04-16_at_02.54.31.jpg?width=297&height=286')
-
-@bot.listen('on_message')
-async def listenmsg(msg):
-    if 'nigg' in msg.content.lower():
-        channel = msg.channel
-        await channel.send('https://tenor.com/bQtER.gif')
+    #if 'latte' in msg.content.lower():
+    #    channel = msg.channel
+    #    await channel.send(':woman_raising_hand:')
 
 ################################################################################################################################################     
+
+@bot.tree.command(name="hola", description="te saludo")
+async def hola(interaction: discord.Interaction):
+    await interaction.response.send_message(f"Que onda {interaction.user.mention}")
 
 @commands.command()
 async def hola(ctx):
@@ -233,13 +215,17 @@ async def hola(ctx):
 bot.add_command(hola)
 
 @commands.command()
-async def mamala(ctx):
-  await ctx.reply("vos hp")
+async def mamala(ctx):              
+    await ctx.reply("vos hp")   
 bot.add_command(mamala)
 
-@bot.command()
-async def ping(ctx):
-  await ctx.reply(f"Pong jaksj {round(bot.latency * 1000)}ms")
+# @bot.command()
+# async def ping(ctx):
+#   await ctx.reply(f"Pong jaksj {round(bot.latency * 1000)}ms")
+
+@bot.tree.command(name="ping", description="te muestro mi ping")
+async def ping(interaction: discord.Interaction):
+    await interaction.response.send_message(f"Pong jajja mi ping anda en {round(bot.latency*1000)} ms")
 
 @bot.command()
 async def felicitame(ctx):
@@ -257,22 +243,20 @@ async def calc(ctx, expression):
         calculated = eval(expression)
     await ctx.send(calculated)
 
-@bot.command(aliases=['dice'])
-async def dado(ctx):
-    await ctx.send(str(random.randint(1, 6)))
+@bot.tree.command(name="dado", description="número aleatorio del 1 al 6")
+async def dado(interaction: discord.Interaction):
+    await interaction.response.send_message(str(random.randint(1, 6)))
 
-@bot.command(aliases=['osuroll'])
-async def roll(ctx, max:int=100):
-    number = random.randint(1,max)
-    await ctx.send(number)
+@bot.tree.command(name="roll", description="igualito al osu roll")
+async def roll(interaction: discord.Interaction, max:int=100):
+    number = random.randint(1, max)
+    await interaction.response.send_message(number)
 
 def upper(argument):
     return argument.upper()
 @bot.command(aliases=['grita'])
 async def gritame(ctx, *, content: upper):
     await ctx.send(content)
-
-
 
 @bot.command(aliases=['yt'])
 async def youtube(ctx, *, search):
@@ -306,19 +290,21 @@ async def inspirame(ctx):
 #    image_link = response.json()["message"]
 #    await ctx.send(image_link)
 
-@bot.command(aliases=['dog', 'perro'])
+
+# https://dog.ceo/api/breeds/image/random
+@bot.command(aliases=['dog, perro'])
 async def perra(ctx):
    async with aiohttp.ClientSession() as session:
-      request = await session.get('https://some-random-api.ml/img/dog') # Make a request
-      dogjson = await request.json() # Convert it to a JSON dictionary
-   embed = discord.Embed(title="perra", color=discord.Color.purple()) # Create embed
-   embed.set_image(url=dogjson['link']) # Set the embed image to the value of the 'link' key
-   await ctx.send(embed=embed) # Send the embed
+      request = await session.get('https://some-random-api.ml/img/dog') # Hacer request
+      data = await request.json() # Convertir a JSON dictionary
+   embed = discord.Embed(title="toma pues", color=discord.Color.purple()) # Crear embed
+   embed.set_image(url=data['link']) # Set embed image to el valor del 'link' key
+   await ctx.send(embed=embed)
 
 
-#@bot.command(aliases=['sex'])
-#async def sexo(ctx):
-#        embed = discord.Embed(title="Sex", description="omg quiere sexo", color=discord.Color.blue())
+#@bot.command(aliases=['algo'])
+#async def sets(ctx):
+#        embed = discord.Embed(title="algo", description="omg quiere algo", color=discord.Color.blue())
 #        embed.add_field(name="waos", value="lol", inline=False)
 #        embed.add_field(name="izquierda", value="nose lol", inline=True)
 #        embed.add_field(name="derecha xd", value="ojo [aqui](https://media.tenor.com/WkZleYOImDAAAAAS/its-not-something-you-cod-achieve-easily-cod.gif)", inline=True)
@@ -342,8 +328,8 @@ async def perra(ctx):
 #    await ctx.send(response)
 
 
-@bot.command(aliases=['8ball', '8b', 'predecime', 'predict'], description='Predicción épica\n')
-async def decime(ctx, *, question):
+@bot.command(aliases=['8ball', '8b', 'predecime', 'decime'], description='Predicción épica\n')
+async def predict(ctx, *, question):
     responses = ['Simon',
              'Desde mi punto de vista, si xd',
              'Sin ningún tipo de duda, si',
@@ -372,7 +358,7 @@ YTDLP_OPTIONS = {
                 'audioformat': 'mp3',
                 'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
                 'restrictfilenames': True,
-                'noplaylist': True,
+            'noplaylist': True,
                 'nocheckcertificate': True,
                 'ignoreerrors': False,
                 'logtostderr': False,
@@ -384,13 +370,36 @@ YTDLP_OPTIONS = {
 
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
+ytdl = yt_dlp.YoutubeDL(YTDLP_OPTIONS)
+
+class YTDLSource(discord.PCMVolumeTransformer):
+    def __init__(self, source, *, data, volume=0.5):
+        super().__init__(source, volume)
+
+        self.data = data
+
+        self.title = data.get('title')
+        self.url = data.get('url')
+
+    @classmethod
+    async def from_url(cls, url, *, loop=None, stream=False):
+        loop = loop or asyncio.get_event_loop()
+        data = await loop.run_in_executor(None, lambda: ytdl.extract_info(url, download= not stream))
+
+        if 'entries' in data:
+            # take first item from a playlist
+            data = data['entries'][0]
+
+        filename = data['url'] if stream else ytdl.prepare_filename(data)
+        return cls(discord.FFmpegPCMAudio(filename, **FFMPEG_OPTIONS), data=data)
+
 @bot.command()
 async def join(ctx):
-    if ctx.voice_client in  bot.voice_clients:
-        await ctx.reply("Ya estoy en vc")
     if ctx.author.voice is None:
         await ctx.reply("Metete a vc")
-    else:
+    elif ctx.voice_client in bot.voice_clients:
+        await ctx.reply("Ya estoy en vc")
+    elif ctx.voice_client is None:
         channel = ctx.author.voice.channel
         await channel.connect()
         await ctx.reply("yap")
@@ -399,44 +408,46 @@ async def join(ctx):
 async def leave(ctx):
     if ctx.author.voice is None:
         await ctx.reply("Ni estás en vc")
-    else:
-        if ctx.voice_client.is_connected:
-            await ctx.voice_client.disconnect()
-            await ctx.reply("yap")
-        else:
-            await ctx.reply("Ni siquiera estoy en vc, bruh")
+    elif ctx.voice_client is None:
+        await ctx.reply("Ni siquiera estoy en vc, bruh")
+    elif ctx.voice_client.is_connected:
+        await ctx.voice_client.disconnect()
+        await ctx.reply("yap")
 
 @bot.command()
 async def stop(ctx):
     if ctx.author.voice is None:
         await ctx.reply("Ni estás en vc")
-    else:
-        if ctx.voice_client.is_playing:
-         ctx.voice_client.stop()
-         await ctx.reply("ya te la paré")
-        else:
-         await ctx.reply("No estoy tocando nada")
+    elif ctx.voice_client is None:
+        await ctx.reply("Ni siquiera estoy en vc, bruh")
+    elif ctx.voice_client.is_playing:
+        ctx.voice_client.stop()
+        await ctx.reply("ya te la paré")
+
 
 @bot.command()
 async def pause(ctx):
     if ctx.author.voice is None:
         await ctx.reply("Ni estás en vc")
-    else:
-        if ctx.voice_client.is_playing:
-         ctx.voice_client.pause()
-         await ctx.reply("pausado")
-        else:
-         await ctx.reply("No estoy tocando nada")
+    elif ctx.voice_client is None:
+        await ctx.reply("Ni siquiera estoy en vc, bruh")
+    elif ctx.voice_client.is_playing:
+        ctx.voice_client.pause()
+        await ctx.reply("pausado")
 
 @bot.command()
 async def resume(ctx):
     if ctx.author.voice is None:
         await ctx.reply("Ni estás en vc")
-    if ctx.voice_client.is_playing:
-             ctx.voice_client.resume()
-             await ctx.reply("resumido")
-    else:
-        await ctx.reply("No estoy pausada")
+    elif ctx.voice_client is None:
+        await ctx.reply("Ni siquiera estoy en vc, bruh")
+    #elif ctx.voice.is_playing():
+    #    await ctx.reply("Ya está resumida")
+    #elif ctx.voice.is_playing is False():
+    #    await ctx.reply("No hay nada sonando")
+    elif ctx.voice_client.is_paused:
+        ctx.voice_client.resume()
+        await ctx.reply("resumido")
 
 def play_next(self):
         if len(self.music_queue) > 0:
@@ -452,49 +463,63 @@ def play_next(self):
         else:
             self.is_playing = False
 
-      
-@bot.command(name='play', aliases=['p'], pass_context = True)
-async def play(ctx, *, search_term:str = None):
+def start_playing(self, voice_client, player):
+
+    self.music_queue[0] = player
+
+    i = 0
+    while i <  len(self.music_queue):
+        try:
+            voice_client.play(self.music_queue[i], after=lambda e: print('Player error: %s' % e) if e else None)
+
+        except:
+            pass
+        i += 1
+
+
+@bot.command(name='play', aliases=['p'], pass_context=True)
+async def play(ctx, *, search_term: str = None):
     if ctx.author.voice is None:
-        await ctx.reply("Metete a vc")        
-    if ctx.author.voice:
-        voice = None
-    if search_term == None:
-        await ctx.send('No hay canción especificada.')
+        await ctx.reply("Metete a vc")
         return
+
+    if not search_term:
+        await ctx.send('Decime cual canción si')
+        return
+
     if not ctx.voice_client:
-            channel = ctx.message.author.voice.channel
-            voice = await channel.connect()
+        channel = ctx.author.voice.channel
+        voice = await channel.connect()
     else:
-            if search_term[0:4] == "http" or search_term[0:3] == "www":
-                with yt_dlp.YoutubeDL(YTDLP_OPTIONS) as ydl:
-                    info = ydl.extract_info(search_term, download = False)
-                    title = info["title"]
-                    url = search_term
- 
-            if search_term[0:4] != "http" and search_term[0:3] != "www":
-                with yt_dlp.YoutubeDL(YTDLP_OPTIONS) as ydl:
-                    info = ydl.extract_info(f"ytsearch:{search_term}", download = False)["entries"][0]
-                    title = info["title"]
-                    url = info["webpage_url"]
-                    voice = ctx.guild.voice_client
-            if voice.is_playing():
-#                queue.append(title)
-                await ctx.send(f"**Agregada a la lista:** {title}")
-            else:
-                voice.play(discord.FFmpegPCMAudio(f"{title}.mp3")) #after = lambda e : check_queue())
-                await ctx.send(f"**Sonando** {title}")
-            
-       #url = YT.singleSearch(search_term)
+        voice = ctx.voice_client
 
-            with yt_dlp.YoutubeDL(YTDLP_OPTIONS) as ydl:
-                info = ydl.extract_info(url, download=False)
-                playUrl = info['url']
+    if search_term.startswith(('http', 'www')):
+        url = search_term
+    else:
+        with ytdl as ydl:
+            info = ydl.extract_info(f"ytsearch:{search_term}", download=False)["entries"][0]
+            title = info["title"]
+            url = info["webpage_url"]
 
-            source = FFmpegPCMAudio(source=playUrl, before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5",options="-vn")
-            voice.play(source)
+    info = ydl.extract_info(url, download=False)
+    play_url = info['url']
+
+    source = FFmpegPCMAudio(source=play_url, before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5", options="-vn")
+    voice.play(source)
+
+    await ctx.send(f"**Sonando** {title}")
+      
+            #if voice.is_playing():
+#           #     queue.append(title)
+            #    await ctx.send(f"**Agregada a la lista:** {title}")
+            #else:
+            #    voice.play(discord.FFmpegPCMAudio(f"{title}.mp3")) #after = lambda e : check_queue())
+            #    await ctx.send(f"**Sonando** {title}")
+
+
 
 ##########################################################################
 ########################################################################################
 
 bot.run("NzQwNjgxNTU3NzMxMzExNjI3.Guix_l.Ib-A1MRhmtme4Iz9YqrcixPAHhS_ZbuW10dySc")
+
