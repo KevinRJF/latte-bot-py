@@ -521,5 +521,5 @@ async def play(ctx, *, search_term: str = None):
 ##########################################################################
 ########################################################################################
 
-bot.run("NzQwNjgxNTU3NzMxMzExNjI3.Guix_l.Ib-A1MRhmtme4Iz9YqrcixPAHhS_ZbuW10dySc")
+bot.run("token")
 
