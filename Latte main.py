@@ -168,15 +168,7 @@ async def listenmsg(msg):
     if 'pato' in msg.content.lower():
         channel = msg.channel
         await channel.send('https://tenor.com/boioN.gif')
-
-    if 'mamala chebin' in msg.content.lower():
-        channel = msg.channel
-        await channel.send('sos cochón chebin')
-    
-    if 'sex' in msg.content.lower():
-        channel = msg.channel
-        await channel.send('https://media.discordapp.net/attachments/522820942125203462/897435255605198858/885398144244928524.gif?width=160&height=160')
-
+        
     if 'sus' in msg.content.lower():
         channel = msg.channel
         await channel.send('https://cdn.discordapp.com/attachments/1095826652736520192/1097084226077196359/among-us-twerk.gif')
@@ -184,10 +176,6 @@ async def listenmsg(msg):
     if 'chebin' in msg.content.lower():
         channel = msg.channel
         await channel.send('https://media.discordapp.net/attachments/1095826652736520192/1097085240108920882/WhatsApp_Image_2023-04-16_at_02.54.31.jpg?width=297&height=286')
-
-    if 'nigg' in msg.content.lower():
-        channel = msg.channel
-        await channel.send('https://tenor.com/bQtER.gif')
 
 #@bot.event
 #async def on_message(message):
@@ -522,4 +510,5 @@ async def play(ctx, *, search_term: str = None):
 ########################################################################################
 
 bot.run("token")
+
 
